@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../features/auth/authApiSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 import useAuth from "../hooks/useAuth";
 
@@ -14,6 +15,8 @@ const DashHeader = () => {
   const [sendLogout, { isLoading, isSuccess, isError, error }] =
     useSendLogoutMutation();
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const { isManager, isAdmin } = useAuth();
 
   useEffect(() => {
@@ -21,6 +24,15 @@ const DashHeader = () => {
       navigate("/");
     }
   }, [isSuccess, navigate]);
+
+  useEffect(() => {
+    // Close mobile menu on route change
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const onNewProjectClicked = () => navigate("/dash/projects/new");
   const onNewDesignerClicked = () => navigate("/dash/designers/new");
@@ -135,21 +147,52 @@ const DashHeader = () => {
   }
 
   return (
-    <header className="fixed w-full top-0 z-10 bg-purple-600 text-white shadow-lg">
+    <header className="fixed w-full top-0 z-20 bg-purple-600 text-white shadow-lg transition-all duration-300">
       <div
         className={`container mx-auto flex flex-row justify-between items-center ${dashClass}`}
       >
-        <Link to="/dash">
+        <Link
+          to="/dash"
+          className="transform hover:scale-105 transition-transform duration-300"
+        >
           <h1 className="text-2xl md:text-3xl font-bold">
             <span className="text-yellow-300">Chic</span> Creations
           </h1>
         </Link>
-        <nav className="flex flex-row gap-10">
+        {/* Hamburger Menu Button */}
+        <button
+          className="sm:hidden text-2xl p-2 focus:outline-none"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+        {/* <nav className="flex flex-row gap-10">
           <div className="flex flex-row gap-2 md:gap-3 flex-wrap">
             {buttonContent}
           </div>
+        </nav> */}
+        {/* Desktop Navigation */}
+        <nav className="hidden sm:flex flex-row gap-10">
+          {isLoading ? <p>Logging out...</p> : buttonContent}
         </nav>
       </div>
+      {/* Mobile Navigation */}
+      <nav
+        className={`sm:hidden bg-purple-700 overflow-hidden transition-all duration-500 ease-in-out transform ${
+          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="container mx-auto px-4 py-4">
+          {isLoading ? (
+            <p className="text-center">Logging out...</p>
+          ) : (
+            <div className="flex flex-col gap-3 animate-slideIn">
+              {buttonContent}
+            </div>
+          )}
+        </div>
+      </nav>
     </header>
   );
 };
