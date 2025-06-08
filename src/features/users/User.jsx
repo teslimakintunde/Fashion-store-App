@@ -28,9 +28,7 @@ const User = ({ userId }) => {
         <td className={`bg-white border border-gray-800 p-2 ${cellStatus}`}>
           {userRolesString}
         </td>
-        <td
-          className={`bg-white border border-gray-800 p-2 ${cellStatus} grid place-content-center`}
-        >
+        <td className={`bg-white border border-gray-800 p-2 ${cellStatus}`}>
           <button
             className="text-blue-600 hover:scale-125 transition-transform p-1 text-xl md:text-2xl"
             onClick={handleEdit}

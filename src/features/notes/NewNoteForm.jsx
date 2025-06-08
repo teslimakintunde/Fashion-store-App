@@ -47,10 +47,6 @@ const NewNoteForm = ({ users }) => {
     );
   });
 
-  // const errClass = isError ? "errmsg" : "offscreen";
-  // const validTitleClass = !title ? "form__input--incomplete" : "";
-  // const validTextClass = !text ? "form__input--incomplete" : "";
-
   const errClass = isError
     ? "inline-block bg-red-50 text-red-600 px-4 py-3 mb-4 rounded-lg font-nunito"
     : "hidden";
@@ -69,76 +65,11 @@ const NewNoteForm = ({ users }) => {
     timeStyle: "long",
   }).format(date);
 
-  // const content = (
-  //   <>
-  //     <p className={errClass}>{error?.data?.message}</p>
-
-  //     <form className="form" onSubmit={onSaveNoteClicked}>
-  //       <div className="form__title-row">
-  //         <h2>New Note</h2>
-  //         <div className="form__action-buttons">
-  //           <button className="icon-button" title="Save" disabled={!canSave}>
-  //             <FontAwesomeIcon icon={faSave} />
-  //           </button>
-  //         </div>
-  //       </div>
-  //       <label className="form__label" htmlFor="title">
-  //         Title:
-  //       </label>
-  //       <input
-  //         className={`form__input ${validTitleClass}`}
-  //         id="title"
-  //         name="title"
-  //         type="text"
-  //         autoComplete="off"
-  //         value={title}
-  //         onChange={onTitleChanged}
-  //       />
-
-  //       <label className="form__label" htmlFor="text">
-  //         Text:
-  //       </label>
-  //       <textarea
-  //         className={`form__input form__input--text ${validTextClass}`}
-  //         id="text"
-  //         name="text"
-  //         value={text}
-  //         onChange={onTextChanged}
-  //       />
-
-  //       <label
-  //         className="form__label form__checkbox-container"
-  //         htmlFor="username"
-  //       >
-  //         ASSIGNED TO:
-  //       </label>
-  //       <select
-  //         id="username"
-  //         name="username"
-  //         className="form__select"
-  //         value={userId}
-  //         onChange={onUserIdChanged}
-  //       >
-  //         {options}
-  //       </select>
-  //     </form>
-  //   </>
-  // );
   const content = (
     <section className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 font-nunito  mt-[20px]">
       <div className="container mx-auto px-6 py-12 max-w-4xl">
-        {/* <header className="bg-purple-600 text-white rounded-lg shadow-lg p-8 mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Create New Note -{" "}
-            <span className="text-yellow-300">Tech Masters</span>
-          </h1>
-          <p className="text-lg md:text-xl opacity-90 mb-4">
-            Add a new note for your team’s tasks
-          </p>
-          <p className="text-base text-gray-100">{today}</p>
-        </header> */}
         <header className="bg-purple-600 text-white rounded-lg shadow-lg p-8 mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-[24px] lg:text-4xl md:text-5xl font-bold mb-6">
             Create New Project -{" "}
             <span className="text-yellow-300">Chic Creations</span>
           </h1>
@@ -150,13 +81,13 @@ const NewNoteForm = ({ users }) => {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <p className={errClass}>{error?.data?.message}</p>
           <form className="flex flex-col gap-6" onSubmit={onSaveNoteClicked}>
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col gap-5 sm:flex-row justify-between sm:items-center">
               <h2 className="text-2xl font-semibold text-gray-800">
                 Note Details
               </h2>
               <button
                 type="submit"
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-blue-600 w-fit text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 title="Save Note"
                 disabled={!canSave}
               >

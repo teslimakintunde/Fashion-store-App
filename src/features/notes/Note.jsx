@@ -27,18 +27,26 @@ const Note = ({ noteId }) => {
     });
 
     return (
-      <tr className="font-nunito p-10">
-        <td className="bg-white border border-gray-800 p-2">
+      <tr className="font-nunito p-10 animate-fadeIn">
+        <td className="bg-white border border-gray-800 p-2 sm:p-3">
           {note.completed ? (
-            <span className="note__status--completed">completed</span>
+            <span className="note__status--completed text-green-600">
+              completed
+            </span>
           ) : (
-            <span className="note__status--open">Open</span>
+            <span className="note__status--open text-yellow-600">Open</span>
           )}
         </td>
-        <td className="bg-white border border-gray-800 p-2">{created}</td>
-        <td className="bg-white border border-gray-800 p-2">{updated}</td>
+        <td className=" hidden sm:table-cell bg-white border border-gray-800 p-2 sm:p-3">
+          {created}
+        </td>
+        <td className=" hidden sm:table-cell bg-white border border-gray-800 p-2 sm:p-3">
+          {updated}
+        </td>
         <td className="bg-white border border-gray-800 p-2">{note.title}</td>
-        <td className="bg-white border border-gray-800 p-2">{note.username}</td>
+        <td className="hidden sm:table-cell bg-white border border-gray-800 p-2 sm:p-3 ">
+          {note.username}
+        </td>
         <td className="bg-white border border-gray-800 p-2">
           <button className="icon-button table__button" onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare} />
