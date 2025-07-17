@@ -46,7 +46,7 @@ const EditUserForm = ({ user }) => {
       setUsername("");
       setPassword("");
       setRoles([]);
-      navigate("/dash/users");
+      navigate("/dash/designers");
     }
   }, [isSuccess, isDelSuccess, navigate]);
 

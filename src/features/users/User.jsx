@@ -15,7 +15,7 @@ const User = ({ userId }) => {
   const navigate = useNavigate();
 
   if (user) {
-    const handleEdit = () => navigate(`/dash/users/${userId}`);
+    const handleEdit = () => navigate(`/dash/designers/${userId}`);
     const userRolesString = user.roles.toString().replaceAll(",", ", ");
     // const cellStatus = user.active ? "" : "bg-gray-300 text-gray-500";
     const cellStatus = user.active ? "" : "bg-gray-300";

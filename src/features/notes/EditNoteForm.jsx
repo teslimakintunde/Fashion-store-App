@@ -29,7 +29,7 @@ const EditNoteForm = ({ note, users }) => {
   const onUserIdChanged = (e) => setUserId(e.target.value);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || isDelSuccess) {
       setTitle("");
       setText("");
       setUserId("");
