@@ -41,37 +41,37 @@ const NoteList = () => {
             <tr>
               <th
                 scope="col"
-                className="bg-white border border-gray-800 text-left p-2"
+                className="bg-white border border-gray-800 text-left p-2 sm:p-3"
               >
                 Username
               </th>
               <th
                 scope="col"
-                className="bg-white border border-gray-800 text-left p-2"
+                className="hidden sm:table-cell bg-white border border-gray-800 text-left p-2 sm:p-3 "
               >
                 Created
               </th>
               <th
                 scope="col"
-                className="bg-white border border-gray-800 text-left p-2"
+                className="hidden sm:table-cell bg-white border border-gray-800 text-left p-2 sm:p-3"
               >
                 Updated
               </th>
               <th
                 scope="col"
-                className="bg-white border border-gray-800 text-left p-2"
+                className="bg-white border border-gray-800 text-left p-2 sm:p-3"
               >
                 Title
               </th>
               <th
                 scope="col"
-                className="bg-white border border-gray-800 text-left p-2"
+                className="hidden sm:table-cell bg-white border border-gray-800 text-left p-2 sm:p-3"
               >
                 Owner
               </th>
               <th
                 scope="col"
-                className="bg-white border border-gray-800 text-left p-2"
+                className="bg-white border border-gray-800 text-left p-2 sm:p-3"
               >
                 Edit
               </th>
